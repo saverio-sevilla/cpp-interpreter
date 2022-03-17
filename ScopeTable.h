@@ -26,7 +26,7 @@ private:
 	std::vector <  std::map<string, std::pair<Type, std::any> >  > scope_table_vector{};
 	size_t depth{};
 	bool permit_reassignment{};
-	std::pair<Type, std::any> search_tables(const string& variable_name);
+	std::pair<Type, std::any> search_tables(const string& variable_name) const;
 
 public:
 	
@@ -35,7 +35,7 @@ public:
 	ScopeTable& operator=(const ScopeTable& other) = delete; //
 
 	bool insert_value(string variable_name, Type variable_type, std::any variable_value); //
-	std::pair<Type, std::any> get_value(string variable_name); //
+	std::pair<Type, std::any> get_value(const string& variable_name) const; //
 	bool remove_value(const string& variable_name); //
 
 	void print_tables();

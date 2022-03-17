@@ -24,7 +24,7 @@ bool ScopeTable::insert_value(string variable_name, Type variable_type, std::any
 	return true;
 }
 
-std::pair<Type, std::any> ScopeTable::get_value(string variable_name) {
+std::pair<Type, std::any> ScopeTable::get_value(const string& variable_name) const {
 	const auto& table = scope_table_vector.back();
 	auto it = table.find(variable_name);
 
@@ -35,11 +35,12 @@ std::pair<Type, std::any> ScopeTable::get_value(string variable_name) {
 	return search_tables(variable_name);
 }
 
-std::pair<Type, std::any> ScopeTable::search_tables(const string& variable_name) {
-	for (auto table : scope_table_vector) {
-		auto it = table.find(variable_name);
-		if (it != table.end()) {
-			return (*it).second;
+std::pair<Type, std::any> ScopeTable::search_tables(const string& variable_name) const{
+
+	for (auto it = scope_table_vector.rbegin(); it != scope_table_vector.rend(); ++it) {
+		auto find = (*it).find(variable_name); 
+		if (find != (*it).end()) {
+			return (*find).second;
 		}
 	}
 

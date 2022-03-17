@@ -18,11 +18,11 @@ int main() {
 	test_table.extend_table();
 	std::any a3 = 42;
 	std::any a4 = 42.42;
-	test_table.insert_value("Another int", Type::int_t, a3);
+	test_table.insert_value("Int", Type::int_t, a3);
 	test_table.insert_value("Another Dbl", Type::double_t, a4);
 
 	test_table.extend_table();
-	test_table.insert_value("Last int", Type::int_t, 420);
+	test_table.insert_value("Int2", Type::int_t, 420);
 
 	print_var_pair(test_table.get_value("Int"));
 
