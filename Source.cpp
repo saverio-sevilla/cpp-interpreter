@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ScopeTable.h"
+#include "ExpressionLexer.h"
 
 
 int main() {
@@ -27,5 +28,9 @@ int main() {
 	print_var_pair(test_table.get_value("Int"));
 
 	test_table.print_tables();
+
+	ExpressionLexer lexer("2>=3");
+	auto vec = lexer.parse();
+	printTokenVector(vec);
 
 }

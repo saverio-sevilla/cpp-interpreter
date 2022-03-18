@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ExpressionLexer.h" />
     <ClInclude Include="ScopeTable.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ExpressionLexer.cpp" />
     <ClCompile Include="ScopeTable.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
