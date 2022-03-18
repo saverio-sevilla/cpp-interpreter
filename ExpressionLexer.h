@@ -5,6 +5,7 @@
 #include <cctype>
 #include <iostream>
 #include <map>
+#include <variant>
 
 using std::string;
 using std::vector;
@@ -34,13 +35,31 @@ enum class TokenT {
 	LESS_EQUAL,
 	STRING,
 	ID,
-
+	AND, 
+	CLASS, 
+	ELSE, 
+	FALSE, 
+	FUN, 
+	FOR, 
+	IF, 
+	NIL, 
+	OR,
+	PRINT, 
+	RETURN,
+	SUPER, 
+	THIS, 
+	TRUE, 
+	VAR, 
+	WHILE,
 };
 
 
 struct Token {
 	TokenT type;
-	double value{};
+	std::variant<double, string> t_value;
+
+	bool operator==(const Token& other);
+	bool operator!=(const Token& other);
 };
 
 std::ostream& operator<<(std::ostream& out, const TokenT value);
@@ -50,6 +69,7 @@ class ExpressionLexer
 {
 private:
 	string source{};
+	std::map<string, TokenT> identifiers;
 	string::size_type low_ptr;
 	string::size_type high_ptr;
 	string::size_type string_length;
@@ -62,13 +82,12 @@ private:
 	char next_token();
 	char current_token();
 	void number();
+	void identifier();
+	void string_parse();
 
 public:
 
-	ExpressionLexer(string source) : source{ source } {
-		low_ptr = high_ptr = 0;
-		string_length = source.length();
-	}
+	ExpressionLexer(string source);
 
 	void replace_source(string new_source) {
 		source = new_source;

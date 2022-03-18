@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ScopeTable.h"
 #include "ExpressionLexer.h"
+#include "ExpressionParser.h"
 
 
 int main() {
@@ -29,8 +30,12 @@ int main() {
 
 	test_table.print_tables();
 
-	ExpressionLexer lexer("2>=3");
+	ExpressionLexer lexer("(4*(3*(2*(2)))) + ((2+8+4)/7) + ((2+3)*42)");
 	auto vec = lexer.parse();
-	printTokenVector(vec);
-
+	//printTokenVector(vec);
+	ExpressionParser parser(vec);
+	parser.printFormatted();
+	parser.handleUnary();
+	parser.handleBinary();
+	parser.printFormatted();
 }
