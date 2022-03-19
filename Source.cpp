@@ -2,6 +2,7 @@
 #include "ScopeTable.h"
 #include "ExpressionLexer.h"
 #include "ExpressionParser.h"
+#include "ChunkInterpreter.h"
 
 
 int main() {
@@ -38,4 +39,9 @@ int main() {
 	parser.handleUnary();
 	parser.handleBinary();
 	parser.printFormatted();
+
+	PrintChunk test{"Hello world", 1};
+	test.print();
+	JumpChunk jmp{ 5 , 2};
+	jmp.print();
 }

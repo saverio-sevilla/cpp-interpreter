@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChunkInterpreter.h" />
     <ClInclude Include="ExpressionLexer.h" />
     <ClInclude Include="ExpressionParser.h" />
     <ClInclude Include="ScopeTable.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChunkInterpreter.cpp" />
     <ClCompile Include="ExpressionLexer.cpp" />
     <ClCompile Include="ExpressionParser.cpp" />
     <ClCompile Include="ScopeTable.cpp" />
